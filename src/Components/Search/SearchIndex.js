@@ -5,32 +5,26 @@ class SearchIndex extends Component {
   constructor(props){
     super(props);
     this.state = {
-      things: ['pen', 'marker', 'eraser', 'notebook', 'pencil', 'scissors', 'highlighter', 'stapler', 'paper clip', 'binder', 'hole punch', 'laminator', 'laminating sheets', 'protective sheets', 'index cards']
-    }
-
-    this.state = {
-      search: ""
-    }
-
-    this.state = {
+      things: ['pen', 'marker', 'eraser', 'notebook', 'pencil', 'scissors', 'highlighter', 'stapler', 'paper clip', 'binder', 'hole punch', 'laminator', 'laminating sheets', 'protective sheets', 'index cards'],
+      search: "",
       results: []
     }
   }
  
-  componentWillMount(){
-    this.setState({
-      things: ['pen', 'marker', 'eraser', 'notebook', 'pencil', 'scissors', 'highlighter', 'stapler', 'paper clip', 'binder', 'hole punch', 'laminator', 'laminating sheets', 'protective sheets', 'index cards']
-    })
-    this.setState({
-      results: ['pen', 'marker', 'eraser', 'notebook', 'pencil', 'scissors', 'highlighter', 'stapler', 'paper clip', 'binder', 'hole punch', 'laminator', 'laminating sheets', 'protective sheets', 'index cards']
-    })
-    //console.log(this.state.things)
-  }
+  // componentWillMount(){
+  //   this.setState({
+  //     things: ['pen', 'marker', 'eraser', 'notebook', 'pencil', 'scissors', 'highlighter', 'stapler', 'paper clip', 'binder', 'hole punch', 'laminator', 'laminating sheets', 'protective sheets', 'index cards']
+  //   })
+  //   this.setState({
+  //     results: ['pen', 'marker', 'eraser', 'notebook', 'pencil', 'scissors', 'highlighter', 'stapler', 'paper clip', 'binder', 'hole punch', 'laminator', 'laminating sheets', 'protective sheets', 'index cards']
+  //   })
+  //   //console.log(this.state.things)
+  // }
 
-searchFunction(search) {
+searchFunction() {
   // console.log(this.state.things);
   // let yes = false;
-  for(let i = 0; i< this.state.things.length ; i++){
+  // for(let i = 0; i< this.state.things.length ; i++){
     if(this.state.search != "" && this.state.things != undefined){
       // let yes = this.state.things.includes(this.state.search);
       // let ind = this.state.things.indexOf(this.state.search);
@@ -40,14 +34,14 @@ searchFunction(search) {
       // console.log(this.state.things.findIndex(element => element.includes(this.state.search)));
 
       this.setState({
-        results: this.state.things.filter(element => element.includes(search))
+        results: this.state.things.filter(element => element.includes(this.state.search))
       });
     } else {
       this.setState({
         things: ['pen', 'marker', 'eraser', 'notebook', 'pencil', 'scissors', 'highlighter', 'stapler', 'paper clip', 'binder', 'hole punch', 'laminator', 'laminating sheets', 'protective sheets', 'index cards']
       })
     }
-  }
+  // }
 }
 
  render() {
@@ -55,7 +49,7 @@ searchFunction(search) {
      <div>
        <Input placeholder='Search Here' onChange={e => { 
          this.setState({search : e.target.value}); 
-         this.searchFunction(e.target.value);
+         this.searchFunction();
          }}/>
        <h3>Results:</h3>
          <div>
